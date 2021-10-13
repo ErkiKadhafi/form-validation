@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="shortcut icon" href="#" />
+        <title>Form Vaksin</title>
+    </head>
+    <body class="bg-gray-100 py-6 px-4">
+        <header></header>
+        <main>
+            <div
+                class="
+                    flex flex-col
+                    items-center
+                    bg-white
+                    max-w-4xl
+                    m-auto
+                    px-6
+                    py-10
+                    space-y-10
+                    rounded-xl
+                "
+            >
+                <h1
+                    class="text-3xl font-bold text-center"
+                    style="color: #0067ac"
+                >
+                    Form Validasi Vaksin
+                </h1>
+                <form
+                    name="formPendaftaran"
+                    action=""
+                    class="w-full space-y-6"
+                    onsubmit="return validateForm()"
+                >
+                    <div class="flex flex-col space-y-2">
+                        <label
+                            for="nama"
+                            class="text-gray-600 text-lg font-semibold"
+                            >Nama Mahasiswa</label
+                        >
+                        <input
+                            class="
+                                shadow
+                                appearance-none
+                                border
+                                rounded
+                                w-full
+                                py-2
+                                px-3
+                                text-gray-700
+                                leading-tight
+                                focus:outline-none focus:ring
+                                transition
+                                duration-200
+                            "
+                            type="text"
+                            name="nama"
+                            id="nama"
+                            placeholder="Michael Alexander Siagian"
+                        />
+                    </div>
+                    <div class="flex flex-col space-y-2">
+                        <label
+                            for="nrp"
+                            class="text-gray-600 text-lg font-semibold"
+                            >NRP</label
+                        >
+                        <input
+                            class="
+                                shadow
+                                appearance-none
+                                border
+                                rounded
+                                w-full
+                                py-2
+                                px-3
+                                text-gray-700
+                                leading-tight
+                                focus:outline-none focus:ring
+                                transition
+                                duration-200
+                            "
+                            type="text"
+                            name="nrp"
+                            id="nrp"
+                            placeholder="NRP Mahasiswa"
+                        />
+                    </div>
+                    <div class="flex flex-col space-y-2">
+                        <label
+                            for="telp"
+                            class="text-gray-600 text-lg font-semibold"
+                            >Nomor Telp</label
+                        >
+                        <input
+                            class="
+                                shadow
+                                appearance-none
+                                border
+                                rounded
+                                w-full
+                                py-2
+                                px-3
+                                text-gray-700
+                                leading-tight
+                                focus:outline-none focus:ring
+                                transition
+                                duration-200
+                            "
+                            type="text"
+                            name="telp"
+                            id="telp"
+                            placeholder="081234567890"
+                        />
+                    </div>
+                    <div class="flex flex-col space-y-2">
+                        <label
+                            for="alamat"
+                            class="text-gray-600 text-lg font-semibold"
+                            >Alamat</label
+                        >
+                        <textarea
+                            class="
+                                shadow
+                                appearance-none
+                                border
+                                rounded
+                                py-2
+                                px-3
+                                text-gray-700
+                                leading-tight
+                                focus:outline-none focus:ring
+                                transition
+                                duration-200
+                                resize-none
+                            "
+                            name="alamat"
+                            id="alamat"
+                            cols="30"
+                            rows="5"
+                        ></textarea>
+                    </div>
+                    <div class="flex flex-col space-y-2">
+                        <label
+                            for="fakultas"
+                            class="text-gray-600 text-lg font-semibold"
+                            >Fakultas</label
+                        >
+                        <select
+                            onchange="changeJurusan()"
+                            class="
+                                shadow
+                                block
+                                appearance-none
+                                w-full
+                                border border-gray-200
+                                text-gray-700
+                                py-2
+                                px-2
+                                pr-8
+                                rounded
+                                leading-tight
+                                focus:outline-none focus:ring
+                                transition
+                                duration-200
+                            "
+                            id="fakultas"
+                        >
+                            <option value="0">Pilih Fakultas</option>
+                            <option value="fsad">
+                                Fakultas Sains dan Analitika Data
+                            </option>
+                            <option value="ftirs">
+                                Fakultas Teknologi Industri dan Rekayasa Sistem
+                            </option>
+                            <option value="ftspk">
+                                Fakultas Teknik Sipil, Perencanaan, dan Kebumian
+                            </option>
+                            <option value="ftk">
+                                Fakultas Teknologi Kelautan
+                            </option>
+                            <option value="fteic">
+                                Fakultas Teknologi Elektro dan Informatika
+                                Cerdas
+                            </option>
+                            <option value="vokasi">Fakultas Vokasi</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col space-y-2">
+                        <label
+                            for="jurusan"
+                            class="text-gray-600 text-lg font-semibold"
+                            >Jurusan</label
+                        >
+                        <select
+                            class="
+                                shadow
+                                block
+                                appearance-none
+                                w-full
+                                border border-gray-200
+                                text-gray-700
+                                py-2
+                                px-2
+                                pr-8
+                                rounded
+                                leading-tight
+                                focus:outline-none focus:ring
+                                transition
+                                duration-200
+                            "
+                            id="jurusan"
+                        >
+                            <option value="0">Pilih Jurusan</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col space-y-2">
+                        <label
+                            for="status_vaksin"
+                            class="text-gray-600 text-lg font-semibold"
+                            >Status Vaksin</label
+                        >
+                        <div>
+                            <div class="">
+                                <fieldset>
+                                    <div>
+                                        <label class="inline-flex items-center">
+                                            <input
+                                                type="radio"
+                                                class="form-radio"
+                                                name="status_vaksin"
+                                                value="belum_vaksin"
+                                                checked
+                                            />
+                                            <span class="ml-2"
+                                                >Belum vaksin</span
+                                            >
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="inline-flex items-center">
+                                            <input
+                                                type="radio"
+                                                class="form-radio"
+                                                name="status_vaksin"
+                                                value="sudah_vaksin_1"
+                                            />
+                                            <span class="ml-2"
+                                                >Sudah Vaksin Pertama</span
+                                            >
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="inline-flex items-center">
+                                            <input
+                                                type="radio"
+                                                class="form-radio"
+                                                name="status_vaksin"
+                                                value="sudah_vaksin_2"
+                                            />
+                                            <span class="ml-2"
+                                                >Sudah Vaksin Kedua</span
+                                            >
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-2">
+                        <label
+                            for="status_penyintas"
+                            class="text-gray-600 text-lg font-semibold"
+                            >Apakah anda penyintas?</label
+                        >
+                        <div>
+                            <div class="">
+                                <fieldset>
+                                    <div>
+                                        <label class="inline-flex items-center">
+                                            <input
+                                                type="radio"
+                                                class="form-radio"
+                                                name="status_penyintas"
+                                                value="penyintas"
+                                                checked
+                                            />
+                                            <span class="ml-2">Penyintas</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="inline-flex items-center">
+                                            <input
+                                                type="radio"
+                                                class="form-radio"
+                                                name="status_penyintas"
+                                                value="bukan_penyintas"
+                                            />
+                                            <span class="ml-2"
+                                                >Bukan Penyintas</span
+                                            >
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="
+                            flex
+                            justify-around
+                            min-w-max
+                            max-w-4/5
+                            mx-auto
+                            pt-5
+                        "
+                    >
+                        <button
+                            type="submit"
+                            class="
+                                bg-blue-500
+                                hover:bg-blue-600
+                                text-white
+                                font-bold
+                                py-2
+                                px-8
+                                rounded
+                                transition
+                                duration-200
+                            "
+                        >
+                            Submit
+                        </button>
+                        <button
+                            class="
+                                bg-gray-400
+                                hover:bg-gray-600
+                                text-white
+                                font-bold
+                                py-2
+                                px-8
+                                rounded
+                                transition
+                                duration-200
+                                mr-2
+                            "
+                        >
+                            <a href="">Cancel</a>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <div class="text-center mt-4">
+            &copy; Erki Kadhafi Rosyid PWEB-B 2021
+        </div>
+        <script src="./script.js"></script>
+    </body>
+</html>
